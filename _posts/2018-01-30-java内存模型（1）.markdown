@@ -1,0 +1,19 @@
+---
+layout: post
+title: java内存模型（1）
+date: 2018-01-30 15:32:24.000000000 +09:00
+---
+
+###java内存模型分为：
+```
+虚拟栈
+本地方法栈
+堆
+程序计数器
+```
+
+
+
+[jekyll-docs]: http://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
