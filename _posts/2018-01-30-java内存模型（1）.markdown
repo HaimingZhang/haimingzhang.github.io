@@ -11,7 +11,7 @@ date: 2018-01-30 15:32:24.000000000 +09:00
 堆
 程序计数器
 ```
-
+![](/images/1.jpg)
 
 
 [jekyll-docs]: http://jekyllrb.com/docs/home
