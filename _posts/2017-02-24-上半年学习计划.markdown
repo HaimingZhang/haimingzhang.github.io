@@ -1,0 +1,33 @@
+---
+layout: post
+title: 17年上半年学习规划
+date: 2017-02-23 15:32:24.000000000 +09:00
+---
+
+上半年学习规划
+###SOA框架
+SOA必须包含RPC，RPC主流的包括两种，json和thrift
+
+客户端的SLB,熔断，降级，限流，这是保护服务的几大法宝。
+
+
+###负载均衡
+轮询
+
+###CI/CD灰度发布
+jekins + docker
+
+###服务发现配置中心
+zookeeper
+
+###监控与报警
+statsd+graphite+grafana
+
+
+
+
+
+
+[jekyll-docs]: http://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

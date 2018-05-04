@@ -5,8 +5,8 @@
     <description>黑夜给了我一双黑色的眼睛,我却用他寻找光明.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 May 2018 16:21:46 +0800</pubDate>
-    <lastBuildDate>Thu, 03 May 2018 16:21:46 +0800</lastBuildDate>
+    <pubDate>Fri, 04 May 2018 10:26:53 +0800</pubDate>
+    <lastBuildDate>Fri, 04 May 2018 10:26:53 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -66,6 +66,34 @@
         <pubDate>Tue, 30 Jan 2018 14:32:24 +0800</pubDate>
         <link>http://localhost:4000/2018/01/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/01/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>17年上半年学习规划</title>
+        <description>&lt;p&gt;上半年学习规划
+###SOA框架
+SOA必须包含RPC，RPC主流的包括两种，json和thrift&lt;/p&gt;
+
+&lt;p&gt;客户端的SLB,熔断，降级，限流，这是保护服务的几大法宝。&lt;/p&gt;
+
+&lt;p&gt;###负载均衡
+轮询&lt;/p&gt;
+
+&lt;p&gt;###CI/CD灰度发布
+jekins + docker&lt;/p&gt;
+
+&lt;p&gt;###服务发现配置中心
+zookeeper&lt;/p&gt;
+
+&lt;p&gt;###监控与报警
+statsd+graphite+grafana&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 23 Feb 2017 14:32:24 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</guid>
         
         
       </item>
