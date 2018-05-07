@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>java内存模型（2）</title>
-  <meta name="description" content="java内存模型分为：虚拟栈本地方法栈堆程序计数器">
+  <title>tensorflow install</title>
+  <meta name="description" content="第一步安装python虚拟环境">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="java内存模型（2）">
-  <meta name="twitter:description" content="java内存模型分为：虚拟栈本地方法栈堆程序计数器">
+  <meta name="twitter:title" content="tensorflow install">
+  <meta name="twitter:description" content="第一步安装python虚拟环境">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="java内存模型（2）">
-  <meta property="og:description" content="java内存模型分为：虚拟栈本地方法栈堆程序计数器">
+  <meta property="og:title" content="tensorflow install">
+  <meta property="og:description" content="第一步安装python虚拟环境">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/">
+  <link rel="canonical" href="http://localhost:4000/2018/05/tensorflow/">
   <link rel="alternate" type="application/rss+xml" title="Hemming" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -150,17 +150,26 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-02-28 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2018-02-28</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2018-05-07 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2018-05-07</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">java内存模型（2）</h1>
+    <h1 class="post-title">tensorflow install</h1>
   </header>
 
   <section class="post">
-    <h3 id="java内存模型分为">java内存模型分为：</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>虚拟栈
-本地方法栈
-堆
-程序计数器
+    <h3 id="第一步安装python虚拟环境">第一步安装python虚拟环境</h3>
+
+<h3 id="mac安装tensorflow">mac安装TensorFlow</h3>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py3-none-any.whl
+</code></pre>
+</div>
+<h3 id="运行helloworld">运行helloworld</h3>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> 
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="n">hello</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="s">'hello world!'</span><span class="p">)</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+
+<span class="n">sess</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre>
 </div>
 
@@ -171,21 +180,13 @@
 <section class="read-more">
    
    
-   <div class="read-more-item">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2018/05/tensorflow/" title="link to tensorflow install">tensorflow install</a></h2>
-       <p class="excerpt">第一步安装python虚拟环境mac安装TensorFlowpip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py3-none-any.whl运行helloworldpython import tensorflow as tfhello = tf.constant('hello world!')sess = tf.Session()s...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2018-05-07 14:32:24 +0800" class="post-list__meta--date date">2018-05-07</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/05/tensorflow/>继续阅读</a></div>
-   </div>
-   
-   
    
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2018/01/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1/" title="link to java内存模型（1）">java内存模型（1）</a></h2>
+       <h2 class="post-list__post-title post-title"><a href="/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/" title="link to java内存模型（2）">java内存模型（2）</a></h2>
        <p class="excerpt">java内存模型分为：虚拟栈本地方法栈堆程序计数器&hellip;</p>
-       <div class="post-list__meta"><time datetime="2018-01-30 14:32:24 +0800" class="post-list__meta--date date">2018-01-30</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/01/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1/>继续阅读</a></div>
+       <div class="post-list__meta"><time datetime="2018-02-28 14:32:24 +0800" class="post-list__meta--date date">2018-02-28</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/>继续阅读</a></div>
    </div>
    
 </section>
@@ -196,8 +197,8 @@
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/";
-        this.page.identifier = "/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/";
+        this.page.url = "http://localhost:4000/2018/05/tensorflow/";
+        this.page.identifier = "/2018/05/tensorflow/";
     };
 
     var disqus_shortname = 'vno-jekyll';
