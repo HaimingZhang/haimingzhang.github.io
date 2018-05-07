@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>TCP/IP讲解</title>
-  <meta name="description" content="TCP/IP详解代码块TCP/IP协议采用四层结构，分别是应用层，传输层，网络层和链路层。">
+  <title>线程状态</title>
+  <meta name="description" content="一张图了解线程状态">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="TCP/IP讲解">
-  <meta name="twitter:description" content="TCP/IP详解代码块TCP/IP协议采用四层结构，分别是应用层，传输层，网络层和链路层。">
+  <meta name="twitter:title" content="线程状态">
+  <meta name="twitter:description" content="一张图了解线程状态">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="TCP/IP讲解">
-  <meta property="og:description" content="TCP/IP详解代码块TCP/IP协议采用四层结构，分别是应用层，传输层，网络层和链路层。">
+  <meta property="og:title" content="线程状态">
+  <meta property="og:description" content="一张图了解线程状态">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2016/02/TCP-IP/">
+  <link rel="canonical" href="http://localhost:4000/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/">
   <link rel="alternate" type="application/rss+xml" title="Hemming" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -150,27 +150,14 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-02-17 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-02-17</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2016-06-20 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-06-20</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">TCP/IP讲解</h1>
+    <h1 class="post-title">线程状态</h1>
   </header>
 
   <section class="post">
-    <p>TCP/IP详解</p>
-<h3 id="代码块">代码块</h3>
-<p>TCP/IP协议采用四层结构，分别是应用层，传输层，网络层和链路层。</p>
-
-<h4 id="0-物理介质">0. 物理介质</h4>
-<p>物理介质就是把电脑连接起来的物理手段，常见的有光纤、双绞线、以及无线电波，它决定了电信号（0和1）传输方式，物理介质的不同决定了电信号的传输带宽，速率，传输距离以及抗干扰性等等。<br />
-TCP/IP协议栈分为四层，每一层都由特定的协议与对方进行通信，<strong>而协议之间的通信最终都要转为0和1的电信号，通过物理介质进行传输才能到达对方的电脑</strong>，因此物理介质是网络通信的基石。<br />
-网络通信就像送快递一样，用户买的商品被一层一层包裹就是各种协议，协议描述了商品的大小，收件人，联系方式以及配送地址，而实际的配送交通工具就是物理介质。其次对于一些偏远的地方，快递是不能直达的，需要中途转发，这时快递上的各种协议就起作用了，它记录了需要转发的地址，揽件人的信息等，这就是TCP/IP搞这么多协议的作用。<br />
-下来我们通过一张图来了解一下TCP/IP协议的数据流：</p>
-
-<p><img src="/images/tcp_ip.jpg" alt="" /><br />
-当用户通过http发起一个请求时，应用层，传输层，网络层，链路层的相关协议依次对该请求进行包装并携带对应的首部，最终在链路层生成<strong>以太网数据包</strong>，以太网数据包通过物理介质传输给对方主机，对方主机收到数据包后，然后再一层一层采用对应的协议进行拆包，最后把应用层数据交给应用层处理。<br />
-有了整体概念以后，下面就详细讲一下每一层的分工以及对应的协议：</p>
-<h4 id="1链路层">1.链路层</h4>
-<p>网络通信就是把有特定意义的数据通过物理介质传送给对方，单纯的发送0和1没有意义，因此就需要对0和1进行分组，并且标识好每一组电信号的信息特征，然后按照分组的顺序依次发送。以太网规定一组电信号就是一个数据包，一个数据包称为<strong>一帧</strong>，制定这个规则的就是<strong>以太网协议</strong>。一个完整的以太网数据包如下图所示：</p>
+    <h3 id="一张图了解线程状态">一张图了解线程状态</h3>
+<p><img src="/images/thread_status.jpg" alt="" /></p>
 
 
   </section>
@@ -181,9 +168,9 @@ TCP/IP协议栈分为四层，每一层都由特定的协议与对方进行通�
    
    <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/" title="link to 线程状态">线程状态</a></h2>
-       <p class="excerpt">一张图了解线程状态&hellip;</p>
-       <div class="post-list__meta"><time datetime="2016-06-20 14:32:24 +0800" class="post-list__meta--date date">2016-06-20</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2017/02/%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" title="link to 17年上半年学习规划">17年上半年学习规划</a></h2>
+       <p class="excerpt">上半年学习规划SOA框架SOA必须包含RPC，RPC主流的包括两种，json和thrift客户端的SLB,熔断，降级，限流，这是保护服务的几大法宝。负载均衡轮询CI/CD灰度发布jekins + docker服务发现配置中心zookeeper监控与报警statsd+graphite+grafana&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-02-23 14:32:24 +0800" class="post-list__meta--date date">2017-02-23</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/02/%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/>继续阅读</a></div>
    </div>
    
    
@@ -191,9 +178,9 @@ TCP/IP协议栈分为四层，每一层都由特定的协议与对方进行通�
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2016/02/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%9C%B0%E6%96%B9%E4%BA%86/" title="link to 博客迁移">博客迁移</a></h2>
-       <p class="excerpt">####简单介绍之前博客是在博客园，传送门http://www.cnblogs.com/hm-zhang/&hellip;</p>
-       <div class="post-list__meta"><time datetime="2016-02-16 14:32:24 +0800" class="post-list__meta--date date">2016-02-16</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/02/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%9C%B0%E6%96%B9%E4%BA%86/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2016/02/TCP-IP/" title="link to TCP/IP讲解">TCP/IP讲解</a></h2>
+       <p class="excerpt">TCP/IP详解代码块TCP/IP协议采用四层结构，分别是应用层，传输层，网络层和链路层。0. 物理介质物理介质就是把电脑连接起来的物理手段，常见的有光纤、双绞线、以及无线电波，它决定了电信号（0和1）传输方式，物理介质的不同决定了电信号的传输带宽，速率，传输距离以及抗干扰性等等。TCP/IP协议栈分为四层，每一层都由特定的协议与对方进行通信，而协议之间的通信最终都要转为0和1的电信号，通过物理介质进行传输才能到达对方的电脑，因此物理介质是网络通信的基石。网络通信就像送快递一样，用户买的商...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-02-17 14:32:24 +0800" class="post-list__meta--date date">2016-02-17</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/02/TCP-IP/>继续阅读</a></div>
    </div>
    
 </section>
@@ -204,8 +191,8 @@ TCP/IP协议栈分为四层，每一层都由特定的协议与对方进行通�
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2016/02/TCP-IP/";
-        this.page.identifier = "/2016/02/TCP-IP/";
+        this.page.url = "http://localhost:4000/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/";
+        this.page.identifier = "/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/";
     };
 
     var disqus_shortname = 'vno-jekyll';

@@ -5,13 +5,13 @@
     <description>黑夜给了我一双黑色的眼睛,我却用他寻找光明.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 May 2018 10:39:45 +0800</pubDate>
-    <lastBuildDate>Fri, 04 May 2018 10:39:45 +0800</lastBuildDate>
+    <pubDate>Mon, 07 May 2018 18:31:10 +0800</pubDate>
+    <lastBuildDate>Mon, 07 May 2018 18:31:10 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
         <title>java内存模型（2）</title>
-        <description>&lt;p&gt;###java内存模型分为：&lt;/p&gt;
+        <description>&lt;h3 id=&quot;java内存模型分为&quot;&gt;java内存模型分为：&lt;/h3&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;虚拟栈
 本地方法栈
 堆
@@ -29,7 +29,7 @@
     
       <item>
         <title>java内存模型（1）</title>
-        <description>&lt;p&gt;###java内存模型分为：&lt;/p&gt;
+        <description>&lt;h3 id=&quot;java内存模型分为&quot;&gt;java内存模型分为：&lt;/h3&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;虚拟栈
 本地方法栈
 堆
@@ -48,23 +48,23 @@
     
       <item>
         <title>17年上半年学习规划</title>
-        <description>&lt;p&gt;上半年学习规划
-###SOA框架
-SOA必须包含RPC，RPC主流的包括两种，json和thrift&lt;/p&gt;
+        <description>&lt;p&gt;上半年学习规划&lt;/p&gt;
+&lt;h3 id=&quot;soa框架&quot;&gt;SOA框架&lt;/h3&gt;
+&lt;p&gt;SOA必须包含RPC，RPC主流的包括两种，json和thrift&lt;/p&gt;
 
 &lt;p&gt;客户端的SLB,熔断，降级，限流，这是保护服务的几大法宝。&lt;/p&gt;
 
-&lt;p&gt;###负载均衡
-轮询&lt;/p&gt;
+&lt;h3 id=&quot;负载均衡&quot;&gt;负载均衡&lt;/h3&gt;
+&lt;p&gt;轮询&lt;/p&gt;
 
-&lt;p&gt;###CI/CD灰度发布
-jekins + docker&lt;/p&gt;
+&lt;h3 id=&quot;cicd灰度发布&quot;&gt;CI/CD灰度发布&lt;/h3&gt;
+&lt;p&gt;jekins + docker&lt;/p&gt;
 
-&lt;p&gt;###服务发现配置中心
-zookeeper&lt;/p&gt;
+&lt;h3 id=&quot;服务发现配置中心&quot;&gt;服务发现配置中心&lt;/h3&gt;
+&lt;p&gt;zookeeper&lt;/p&gt;
 
-&lt;p&gt;###监控与报警
-statsd+graphite+grafana&lt;/p&gt;
+&lt;h3 id=&quot;监控与报警&quot;&gt;监控与报警&lt;/h3&gt;
+&lt;p&gt;statsd+graphite+grafana&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 23 Feb 2017 14:32:24 +0800</pubDate>
@@ -75,37 +75,35 @@ statsd+graphite+grafana&lt;/p&gt;
       </item>
     
       <item>
+        <title>线程状态</title>
+        <description>&lt;h3 id=&quot;一张图了解线程状态&quot;&gt;一张图了解线程状态&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/images/thread_status.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 20 Jun 2016 14:32:24 +0800</pubDate>
+        <link>http://localhost:4000/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/06/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
+        
+        
+      </item>
+    
+      <item>
         <title>TCP/IP讲解</title>
         <description>&lt;p&gt;TCP/IP详解&lt;/p&gt;
 &lt;h3 id=&quot;代码块&quot;&gt;代码块&lt;/h3&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@requires_authorization&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;somefunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;'''A docstring'''&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# interesting&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Greater'&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'''interpreter
-... prompt'''&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3 id=&quot;流程图&quot;&gt;流程图&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-flow&quot;&gt;st=&amp;gt;start: Start
-e=&amp;gt;end
-op=&amp;gt;operation: My Operation
-cond=&amp;gt;condition: Yes or No?
+&lt;p&gt;TCP/IP协议采用四层结构，分别是应用层，传输层，网络层和链路层。&lt;/p&gt;
 
-st-&amp;gt;op-&amp;gt;cond
-cond(yes)-&amp;gt;e
-cond(no)-&amp;gt;op
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;以及时序图:&lt;/p&gt;
+&lt;h4 id=&quot;0-物理介质&quot;&gt;0. 物理介质&lt;/h4&gt;
+&lt;p&gt;物理介质就是把电脑连接起来的物理手段，常见的有光纤、双绞线、以及无线电波，它决定了电信号（0和1）传输方式，物理介质的不同决定了电信号的传输带宽，速率，传输距离以及抗干扰性等等。&lt;br /&gt;
+TCP/IP协议栈分为四层，每一层都由特定的协议与对方进行通信，&lt;strong&gt;而协议之间的通信最终都要转为0和1的电信号，通过物理介质进行传输才能到达对方的电脑&lt;/strong&gt;，因此物理介质是网络通信的基石。&lt;br /&gt;
+网络通信就像送快递一样，用户买的商品被一层一层包裹就是各种协议，协议描述了商品的大小，收件人，联系方式以及配送地址，而实际的配送交通工具就是物理介质。其次对于一些偏远的地方，快递是不能直达的，需要中途转发，这时快递上的各种协议就起作用了，它记录了需要转发的地址，揽件人的信息等，这就是TCP/IP搞这么多协议的作用。&lt;br /&gt;
+下来我们通过一张图来了解一下TCP/IP协议的数据流：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-sequence&quot;&gt;Alice-&amp;gt;Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob--&amp;gt;Alice: I am good thanks!
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/images/tcp_ip.jpg&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
+当用户通过http发起一个请求时，应用层，传输层，网络层，链路层的相关协议依次对该请求进行包装并携带对应的首部，最终在链路层生成&lt;strong&gt;以太网数据包&lt;/strong&gt;，以太网数据包通过物理介质传输给对方主机，对方主机收到数据包后，然后再一层一层采用对应的协议进行拆包，最后把应用层数据交给应用层处理。&lt;br /&gt;
+有了整体概念以后，下面就详细讲一下每一层的分工以及对应的协议：&lt;/p&gt;
+&lt;h4 id=&quot;1链路层&quot;&gt;1.链路层&lt;/h4&gt;
+&lt;p&gt;网络通信就是把有特定意义的数据通过物理介质传送给对方，单纯的发送0和1没有意义，因此就需要对0和1进行分组，并且标识好每一组电信号的信息特征，然后按照分组的顺序依次发送。以太网规定一组电信号就是一个数据包，一个数据包称为&lt;strong&gt;一帧&lt;/strong&gt;，制定这个规则的就是&lt;strong&gt;以太网协议&lt;/strong&gt;。一个完整的以太网数据包如下图所示：&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 17 Feb 2016 14:32:24 +0800</pubDate>
