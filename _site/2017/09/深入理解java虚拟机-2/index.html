@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>深入理解java虚拟机（2）</title>
+  <meta name="description" content="垃圾回收算法标记清除算法主要不足：  效率问题，标记和清除的过程效率都不高  空间问题，标记清除之后产生不连续的内存碎片，内存碎片太多会导致在程序运行过程中需要分配较大的对象，无法找到足够的连续内存而不得不提前触发另一次的垃圾回收动作。">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="深入理解java虚拟机（2）">
+  <meta name="twitter:description" content="垃圾回收算法标记清除算法主要不足：  效率问题，标记和清除的过程效率都不高  空间问题，标记清除之后产生不连续的内存碎片，内存碎片太多会导致在程序运行过程中需要分配较大的对象，无法找到足够的连续内存而不得不提前触发另一次的垃圾回收动作。">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="深入理解java虚拟机（2）">
+  <meta property="og:description" content="垃圾回收算法标记清除算法主要不足：  效率问题，标记和清除的过程效率都不高  空间问题，标记清除之后产生不连续的内存碎片，内存碎片太多会导致在程序运行过程中需要分配较大的对象，无法找到足够的连续内存而不得不提前触发另一次的垃圾回收动作。">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-2/">
+  <link rel="alternate" type="application/rss+xml" title="Hemming" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hemming 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hemming logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hemming" class="blog-button">Hemming</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">记录成长中的点点滴滴</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">黑夜给了我一双黑色的眼睛,我却用他寻找光明.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">欢迎来到Hemming的技术博客</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <!-- <li class="navigation__item"><a href="http://project.onevcat.com" target="_blank" title="My Projects">Projects</a></li> -->
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/onevcat" title="@onevcat 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/onevcat" title="@onevcat 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/onevcat" title="@onevcat" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Google Plus -->
+  <li class="navigation__item">
+    <a href="https://plus.google.com/107108267983477358170" rel="author" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google Plus</span>
+    </a>
+  </li>
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:onev@onevcat.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-red"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-09-10 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2017-09-10</time> &#8226; <span class="post-meta__tags tags"></span>
+    </div>
+    <h1 class="post-title">深入理解java虚拟机（2）</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="垃圾回收算法">垃圾回收算法</h3>
+<h4 id="标记清除算法">标记清除算法</h4>
+<p>主要不足：</p>
+<ol>
+  <li>效率问题，标记和清除的过程效率都不高</li>
+  <li>空间问题，标记清除之后产生不连续的内存碎片，内存碎片太多会导致在程序运行过程中需要分配较大的对象，无法找到足够的连续内存而不得不提前触发另一次的垃圾回收动作。</li>
+</ol>
+
+<h4 id="复制算法">复制算法</h4>
+<p>为了解决效率问题，将可用的内存按照容量划分为大小相等的两块，每次只是使用其中的一块。算法的代价将内存缩小为原来的一半，未免太高了。<br />
+eden survivor0 survivor1<br />
+8     :    1      :       1<br />
+每次新生代容量为90%</p>
+
+<h4 id="标记整理算法">标记整理算法</h4>
+
+<h4 id="分代收集算法">分代收集算法</h4>
+<p>根据新生代和老年代的不同</p>
+
+<p>在OopMap的协助下，HotSpot可以快速且准确的完成gc roots的枚举
+安全点和安全区域</p>
+
+<p>线程sleep和block状态需要引入安全区域来解决</p>
+
+<h3 id="垃圾收集器">垃圾收集器</h3>
+<p>7种收集器如下图所示<br />
+<img src="/images/gc.png" alt="" /></p>
+
+<h4 id="serial">Serial</h4>
+<p><img src="/images/Serial.png" alt="" /><br />
+单线程完成收集工作，必须暂停其他所有的工作线程<br />
+从jdk1.3 到 jdk 1.7一直在优化<br />
+从Serial  -&gt; Parallel -&gt; cms(concurrent mark sweep) -&gt; G1 (Garbage first)<br />
+用户停顿的时间在不断缩短，但是仍然没法完全消除</p>
+
+<p>Serial收集器对于客户端应用来说是很好的选择</p>
+
+<h4 id="parnew收集器">ParNew收集器</h4>
+<p><img src="/images/ParNew.png" alt="" /><br />
+-XX:SurvivorRatio  -XX:PretenureSizeThreshold  -XX:HandkePromotionFailure<br />
+ParNew 除了多线程收集以外，其他与Serial相比没有太多创新之处</p>
+
+<h4 id="cms">CMS</h4>
+<p>cms 真正意义上的并发收集器 <br />
+-XX:+UseConcMarkSweepGC<br />
+-XX:+UseParNewGC</p>
+
+<p>可以使用-XX:ParallelGCThreads</p>
+
+<p>Parallel Scavenge用于精确控制吞吐量<br />
+-XX:MaxGCPauseMillis 最大垃圾收集停顿时间<br />
+-XX:GCTimeRatio  直接设置吞吐量的大小</p>
+
+<p>-XX:+UseAdaptiveSizePolicy 打开参数之后GC可以自适应调节策略<br />
+在注重吞吐量和cpu资源敏感 可以优先考虑Parallel Scavenge  加 Parallel Old收集器</p>
+
+<p>CMS收集器  是以获取最短回收停顿时间为目标的收集器<br />
+分为四个过程</p>
+<ol>
+  <li>初始标记</li>
+  <li>并发标记</li>
+  <li>重新标记</li>
+  <li>并发清楚</li>
+</ol>
+
+<p>cms三个缺点</p>
+<ol>
+  <li>对于cpu资源特别敏感，在并发阶段虽然不会导致用户线程停顿，但是会因为占用了一部分线程而导致应用程序变慢，总吞吐量降低，cms默认线程数（cpu数量+3/4），当cpu大于4个时候，并发线程占了不少于25%的cpu资源，当cpu不足4个时候，占用了很大运算能力，导致用户的运算降低了50%，让人无法接受。为了应付这种情况，虚拟机提供了 增量式并发收集器 ，效果很一般</li>
+  <li>cms无法处理浮动垃圾，可能出现Concurrent mode failure 失败导致另一次full GC。由于cms并发清理的阶段，用户线程还在运行，伴随程序还会有新的垃圾产生，这一部分垃圾出现在标记过程之后，cms无法当次收集处理掉他们，只能等到下次GC再处理，这部分垃圾称为浮动垃圾。由于在垃圾收集阶段用户线程还需要运行，那也还需要预留足够的空间给用户线程使用，因此cms不能等到老年代几乎满了再进行收集，需要预留一部分空间提供给并发的程序使用。在jdk1.5默认配置下，cms当老年代使用了68%空间就会被激活，这是一个偏保守的设置，如果应用中老年代增长的不快，可以适当调高-XX:CMSInitiatingOccupancyFraction的值来触发百分比，以降低内存回收次数，获得更好的性能，在jdk1.6中cms启动的阈值已经提高到92%，要是cms运行期间预留的内存无法满足程序的需要，就会出现异常Concurrent Mode Failure 失败，这是虚拟机会启动后备预案，临时启动Serial Old 收集器来重新进行老年代的垃圾收集，这样停顿时间就很长了。所以说-XX:CMSInitiatingOccupancyFraction设置的太高很容易导致Concurrent Mode Failure失败，反而性能下降。</li>
+  <li>cms基于标记清楚算法实现的收集器，收集结束时会有大量的空间碎片的产生，空间碎片过多，会给大对象分配带来很大麻烦，往往出现空间很足，但是无法找到足够大的连续空间分配给当前对象，不得不提前触发full GC。为了解决这个问题，cms提供一个-XX:+UseCMSCompactAtFullCollection开关参数，默认开启，用于cms收集器顶不住要进行full gc合并整理的过程，内存整理的过程是无法并发的，空间问题没问题了，但是停顿时间变长了。虚拟机还提供了另外的参数-XX:CMSFullGCsBeforeCompaction,这个参数设置多少次不压缩的full gc之后跟着来一次带压缩的，默认为0，表示每次进入full gc都进行碎片压缩。</li>
+</ol>
+
+<h4 id="g1">G1</h4>
+<p>G1是面向服务端应用的垃圾收集器，Hotspot赋予它的使命是替换掉cms收集器<br />
+G1的优点：</p>
+<ol>
+  <li>并行与并发：G1能够充分利用多CPU，多核硬件优势，使用多个cpu来缩短停顿时间，部分其他收集器需要停顿java线程来执行gc操作，G1可以通过并发方式让java程序继续执行。</li>
+  <li>分代收集：与其他收集器一样，分代的概念在G1中依然得到保留，虽然G1可以不需要其他收集器配合就能管理整个堆，能采用不同的方式去处理新创建的对象和已经存活的对象，熬过多次gc的旧对象以获取更好的收集效果。</li>
+  <li>空间整合，与cms标记清理算法不同，G1从整体来看基于标记-整理算法实现的收集器，从局部两个Region之间来看基于复制算法实现的，但无论如何，这两种算法都意味着G1运行期间不会产生内存空间碎片，收集后供规整的可用内存，这种特性有利于程序长时间运行，分配大对象时不会因为无法找到连续内存空间触发下一次的Full GC；</li>
+  <li>可预测的停顿：这是G1相对于cms另一大优势，降低停顿时间是G1和CMS共同的关注点，单G1追求低停顿以外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为M毫秒时间片段内，消耗在垃圾收集上的时间不得超过N毫秒，这已经是实时java（RSTJ）时代的特征了。</li>
+</ol>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/10/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/" title="link to 分布式缓存">分布式缓存</a></h2>
+       <p class="excerpt">分布式缓存&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-10-20 14:32:24 +0800" class="post-list__meta--date date">2017-10-20</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/10/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/08/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-1/" title="link to 深入理解java虚拟机（1）">深入理解java虚拟机（1）</a></h2>
+       <p class="excerpt">java内存模型分为：虚拟栈本地方法栈堆程序计数器虚拟栈java 虚拟机栈，用于存储局部变量，操作数栈，动态链接，方法出口信息本地方法栈本地方法栈用于存储虚拟机使用到的native方法java堆java堆 是java虚拟机管理内存中最大的区域，java堆是被所有线程共享的java堆基本配置：-Xmx -Xms方法区与java堆一样，是各个线程之间内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量，即编译后的代码等数据， 永久代直接内存nio为了提高效率，采取了直接读取内存的方式   ...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-08-30 14:32:24 +0800" class="post-list__meta--date date">2017-08-30</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/08/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-1/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2017/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-2/";
+        this.page.identifier = "/2017/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-2/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-05-08 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

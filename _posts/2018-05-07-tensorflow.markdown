@@ -4,13 +4,21 @@ title: tensorflow install
 date: 2018-05-07 15:32:24.000000000 +09:00
 ---
 
-### 第一步安装python虚拟环境  
+### 1.安装python虚拟环境  
+```
+$ pip install virtualenv
+$ virtualenv --version
+$ cd my_project_folder
+$ virtualenv my_project
+$ virtualenv -p /usr/bin/python2.7 my_project
+$ source my_project/bin/activate
+```
 
-### mac安装TensorFlow 
+### 2.mac安装TensorFlow 
 ```shell
 pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py3-none-any.whl
 ```
-### 运行helloworld
+### 3.运行helloworld
 ```python
 python 
 import tensorflow as tf

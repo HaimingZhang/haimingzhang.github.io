@@ -1,0 +1,18 @@
+---
+layout: post
+title: 17年下半年学习规划
+date: 2017-07-25 15:32:24.000000000 +09:00
+---
+
+下半年学习规划
+### 了解分布式架构  
+#### 探索性学习
+
+
+
+
+
+
+[jekyll-docs]: http://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

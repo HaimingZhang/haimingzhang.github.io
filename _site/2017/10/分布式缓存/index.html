@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>java内存模型（2）</title>
-  <meta name="description" content="java内存模型分为：虚拟栈本地方法栈堆程序计数器">
+  <title>分布式缓存</title>
+  <meta name="description" content="分布式缓存">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="java内存模型（2）">
-  <meta name="twitter:description" content="java内存模型分为：虚拟栈本地方法栈堆程序计数器">
+  <meta name="twitter:title" content="分布式缓存">
+  <meta name="twitter:description" content="分布式缓存">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="java内存模型（2）">
-  <meta property="og:description" content="java内存模型分为：虚拟栈本地方法栈堆程序计数器">
+  <meta property="og:title" content="分布式缓存">
+  <meta property="og:description" content="分布式缓存">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/">
+  <link rel="canonical" href="http://localhost:4000/2017/10/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">
   <link rel="alternate" type="application/rss+xml" title="Hemming" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -150,20 +150,13 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-02-28 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2018-02-28</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2017-10-20 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2017-10-20</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">java内存模型（2）</h1>
+    <h1 class="post-title">分布式缓存</h1>
   </header>
 
   <section class="post">
-    <h3 id="java内存模型分为">java内存模型分为：</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>虚拟栈
-本地方法栈
-堆
-程序计数器
-</code></pre>
-</div>
-
+    <h4 id="分布式缓存">分布式缓存</h4>
 
   </section>
 </article>
@@ -174,7 +167,7 @@
    <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
        <h2 class="post-list__post-title post-title"><a href="/2018/05/tensorflow/" title="link to tensorflow install">tensorflow install</a></h2>
-       <p class="excerpt">第一步安装python虚拟环境mac安装TensorFlowpip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py3-none-any.whl运行helloworldpython import tensorflow as tfhello = tf.constant('hello world!')sess = tf.Session()s...&hellip;</p>
+       <p class="excerpt">1.安装python虚拟环境$ pip install virtualenv$ virtualenv --version$ cd my_project_folder$ virtualenv my_project$ virtualenv -p /usr/bin/python2.7 my_project$ source my_project/bin/activate2.mac安装TensorFlowpip install --ignore-installed --upgrade https:/...&hellip;</p>
        <div class="post-list__meta"><time datetime="2018-05-07 14:32:24 +0800" class="post-list__meta--date date">2018-05-07</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/05/tensorflow/>继续阅读</a></div>
    </div>
    
@@ -183,9 +176,9 @@
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2018/01/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1/" title="link to java内存模型（1）">java内存模型（1）</a></h2>
-       <p class="excerpt">java内存模型分为：虚拟栈本地方法栈堆程序计数器&hellip;</p>
-       <div class="post-list__meta"><time datetime="2018-01-30 14:32:24 +0800" class="post-list__meta--date date">2018-01-30</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/01/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2017/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-2/" title="link to 深入理解java虚拟机（2）">深入理解java虚拟机（2）</a></h2>
+       <p class="excerpt">垃圾回收算法标记清除算法主要不足：  效率问题，标记和清除的过程效率都不高  空间问题，标记清除之后产生不连续的内存碎片，内存碎片太多会导致在程序运行过程中需要分配较大的对象，无法找到足够的连续内存而不得不提前触发另一次的垃圾回收动作。复制算法为了解决效率问题，将可用的内存按照容量划分为大小相等的两块，每次只是使用其中的一块。算法的代价将内存缩小为原来的一半，未免太高了。eden survivor0 survivor18     :    1      :       1每次新生代容量为9...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-09-10 14:32:24 +0800" class="post-list__meta--date date">2017-09-10</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA-2/>继续阅读</a></div>
    </div>
    
 </section>
@@ -196,8 +189,8 @@
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/";
-        this.page.identifier = "/2018/02/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-2/";
+        this.page.url = "http://localhost:4000/2017/10/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/";
+        this.page.identifier = "/2017/10/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/";
     };
 
     var disqus_shortname = 'vno-jekyll';
@@ -221,7 +214,7 @@
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-05-07 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-05-08 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
     </footer>
 </section>
