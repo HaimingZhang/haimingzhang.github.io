@@ -1,0 +1,13 @@
+---
+layout: post
+title: 线程阻塞方式
+date: 2017-05-09 15:32:24.000000000 +09:00
+---
+
+### 线程阻塞方式  
+sleep()
+
+线程阻塞状态
+![](/images/thread_block.jpg)
+
+

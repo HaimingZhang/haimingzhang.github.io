@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hemming</title>
-    <description>黑夜给了我一双黑色的眼睛,我却用他寻找光明.</description>
+    <description>竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 May 2018 11:46:22 +0800</pubDate>
-    <lastBuildDate>Wed, 09 May 2018 11:46:22 +0800</lastBuildDate>
+    <pubDate>Fri, 11 May 2018 14:49:48 +0800</pubDate>
+    <lastBuildDate>Fri, 11 May 2018 14:49:48 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -217,6 +217,22 @@ nio为了提高效率，采取了直接读取内存的方式&lt;/p&gt;
       </item>
     
       <item>
+        <title>线程阻塞方式</title>
+        <description>&lt;h3 id=&quot;线程阻塞方式&quot;&gt;线程阻塞方式&lt;/h3&gt;
+&lt;p&gt;sleep()&lt;/p&gt;
+
+&lt;p&gt;线程阻塞状态
+&lt;img src=&quot;/images/thread_block.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 09 May 2017 14:32:24 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E%E6%96%B9%E5%BC%8F/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E%E6%96%B9%E5%BC%8F/</guid>
+        
+        
+      </item>
+    
+      <item>
         <title>监控与报警</title>
         <description>&lt;h3 id=&quot;监控与报警&quot;&gt;监控与报警&lt;/h3&gt;
 &lt;p&gt;statsd+graphite+grafana&lt;/p&gt;
@@ -263,19 +279,6 @@ nio为了提高效率，采取了直接读取内存的方式&lt;/p&gt;
         <pubDate>Mon, 27 Mar 2017 14:32:24 +0800</pubDate>
         <link>http://localhost:4000/2017/03/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/03/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>SOA框架</title>
-        <description>&lt;p&gt;上半年学习规划&lt;/p&gt;
-&lt;h3 id=&quot;soa框架&quot;&gt;SOA框架&lt;/h3&gt;
-
-</description>
-        <pubDate>Sun, 12 Mar 2017 14:32:24 +0800</pubDate>
-        <link>http://localhost:4000/2017/03/SOA%E6%A1%86%E6%9E%B6/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/SOA%E6%A1%86%E6%9E%B6/</guid>
         
         
       </item>
