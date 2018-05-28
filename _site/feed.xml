@@ -5,9 +5,39 @@
     <description>竹杖芒鞋轻胜马,谁怕?一蓑烟雨任平生</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 14 May 2018 21:37:47 +0800</pubDate>
-    <lastBuildDate>Mon, 14 May 2018 21:37:47 +0800</lastBuildDate>
+    <pubDate>Mon, 28 May 2018 10:17:40 +0800</pubDate>
+    <lastBuildDate>Mon, 28 May 2018 10:17:40 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>DB主从延时</title>
+        <description>&lt;h3 id=&quot;1背景&quot;&gt;1.背景&lt;/h3&gt;
+&lt;p&gt;由于业务扩展，访问量急速增长，导致mysql的CPU使用率达到80%，IO达到90%&lt;/p&gt;
+
+&lt;h3 id=&quot;2解决方案&quot;&gt;2.解决方案&lt;/h3&gt;
+&lt;p&gt;master - slave&lt;br /&gt;
+减轻了主库（写）压力：主要业务读操作，做读写分离后，读压力转移到了从库，主库的压力减小了数十倍。
+从库（读）可水平扩展（加从库机器）：因系统压力主要是读请求，而从库又可水平扩展，当从库压力太时，可直接添加从库机器，缓解读请求压力&lt;/p&gt;
+
+&lt;h3 id=&quot;3新挑战&quot;&gt;3.新挑战&lt;/h3&gt;
+&lt;p&gt;业务高峰期Mysql的主从延时达到10s&lt;/p&gt;
+
+&lt;h3 id=&quot;4如何避免或解决主从延时&quot;&gt;4.如何避免或解决主从延时&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;优化Mysql参数，比如增大innodb_buffer_pool_size，让更多操作在Mysql内存中完成，减少磁盘操作。
+使用高性能CPU主机
+数据库使用物理主机，避免使用虚拟云主机，提升IO性能
+使用SSD磁盘，提升IO性能。SSD的随机IO性能约是SATA硬盘的10倍。
+业务代码优化，将实时性要求高的某些操作，使用主库做读操作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Sun, 20 May 2018 14:32:24 +0800</pubDate>
+        <link>http://localhost:4000/2018/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%BB%B6%E6%97%B6/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%BB%B6%E6%97%B6/</guid>
+        
+        
+      </item>
     
       <item>
         <title>tensorflow install</title>
@@ -299,19 +329,6 @@ nio为了提高效率，采取了直接读取内存的方式&lt;/p&gt;
         <pubDate>Wed, 26 Apr 2017 14:32:24 +0800</pubDate>
         <link>http://localhost:4000/2017/04/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/04/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>CI/CD灰度发布</title>
-        <description>&lt;h3 id=&quot;cicd灰度发布&quot;&gt;CI/CD灰度发布&lt;/h3&gt;
-&lt;p&gt;jekins + docker&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 15 Apr 2017 14:32:24 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/CI-CD%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/CI-CD%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</guid>
         
         
       </item>

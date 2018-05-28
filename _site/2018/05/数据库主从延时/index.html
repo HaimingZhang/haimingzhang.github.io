@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>CI/CD灰度发布</title>
-  <meta name="description" content="CI/CD灰度发布jekins + docker">
+  <title>DB主从延时</title>
+  <meta name="description" content="1.背景由于业务扩展，访问量急速增长，导致mysql的CPU使用率达到80%，IO达到90%">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="CI/CD灰度发布">
-  <meta name="twitter:description" content="CI/CD灰度发布jekins + docker">
+  <meta name="twitter:title" content="DB主从延时">
+  <meta name="twitter:description" content="1.背景由于业务扩展，访问量急速增长，导致mysql的CPU使用率达到80%，IO达到90%">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="CI/CD灰度发布">
-  <meta property="og:description" content="CI/CD灰度发布jekins + docker">
+  <meta property="og:title" content="DB主从延时">
+  <meta property="og:description" content="1.背景由于业务扩展，访问量急速增长，导致mysql的CPU使用率达到80%，IO达到90%">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2017/04/CI-CD%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">
+  <link rel="canonical" href="http://localhost:4000/2018/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%BB%B6%E6%97%B6/">
   <link rel="alternate" type="application/rss+xml" title="Hemming" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -140,14 +140,31 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-04-15 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-15</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2018-05-20 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2018-05-20</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">CI/CD灰度发布</h1>
+    <h1 class="post-title">DB主从延时</h1>
   </header>
 
   <section class="post">
-    <h3 id="cicd灰度发布">CI/CD灰度发布</h3>
-<p>jekins + docker</p>
+    <h3 id="1背景">1.背景</h3>
+<p>由于业务扩展，访问量急速增长，导致mysql的CPU使用率达到80%，IO达到90%</p>
+
+<h3 id="2解决方案">2.解决方案</h3>
+<p>master - slave<br />
+减轻了主库（写）压力：主要业务读操作，做读写分离后，读压力转移到了从库，主库的压力减小了数十倍。
+从库（读）可水平扩展（加从库机器）：因系统压力主要是读请求，而从库又可水平扩展，当从库压力太时，可直接添加从库机器，缓解读请求压力</p>
+
+<h3 id="3新挑战">3.新挑战</h3>
+<p>业务高峰期Mysql的主从延时达到10s</p>
+
+<h3 id="4如何避免或解决主从延时">4.如何避免或解决主从延时</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>优化Mysql参数，比如增大innodb_buffer_pool_size，让更多操作在Mysql内存中完成，减少磁盘操作。
+使用高性能CPU主机
+数据库使用物理主机，避免使用虚拟云主机，提升IO性能
+使用SSD磁盘，提升IO性能。SSD的随机IO性能约是SATA硬盘的10倍。
+业务代码优化，将实时性要求高的某些操作，使用主库做读操作
+</code></pre>
+</div>
 
 
   </section>
@@ -156,21 +173,13 @@
 <section class="read-more">
    
    
-   <div class="read-more-item">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2017/04/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/" title="link to 服务发现与配置中心">服务发现与配置中心</a></h2>
-       <p class="excerpt">服务发现配置中心zookeeper&hellip;</p>
-       <div class="post-list__meta"><time datetime="2017-04-26 14:32:24 +0800" class="post-list__meta--date date">2017-04-26</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/04/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/>继续阅读</a></div>
-   </div>
-   
-   
    
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2017/03/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="link to 负载均衡">负载均衡</a></h2>
-       <p class="excerpt">负载均衡轮询&hellip;</p>
-       <div class="post-list__meta"><time datetime="2017-03-27 14:32:24 +0800" class="post-list__meta--date date">2017-03-27</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2017/03/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2018/05/tensorflow/" title="link to tensorflow install">tensorflow install</a></h2>
+       <p class="excerpt">1.安装python虚拟环境$ pip install virtualenv$ virtualenv --version$ cd my_project_folder$ virtualenv my_project$ virtualenv -p /usr/bin/python2.7 my_project$ source my_project/bin/activate2.mac安装TensorFlowpip install --ignore-installed --upgrade https:/...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-05-07 14:32:24 +0800" class="post-list__meta--date date">2018-05-07</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/05/tensorflow/>继续阅读</a></div>
    </div>
    
 </section>
@@ -181,8 +190,8 @@
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2017/04/CI-CD%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/";
-        this.page.identifier = "/2017/04/CI-CD%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/";
+        this.page.url = "http://localhost:4000/2018/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%BB%B6%E6%97%B6/";
+        this.page.identifier = "/2018/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%BB%B6%E6%97%B6/";
     };
 
     var disqus_shortname = 'vno-jekyll';
