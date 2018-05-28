@@ -5,8 +5,8 @@
     <description>竹杖芒鞋轻胜马,谁怕?一蓑烟雨任平生</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 May 2018 10:17:40 +0800</pubDate>
-    <lastBuildDate>Mon, 28 May 2018 10:17:40 +0800</lastBuildDate>
+    <pubDate>Mon, 28 May 2018 10:39:52 +0800</pubDate>
+    <lastBuildDate>Mon, 28 May 2018 10:39:52 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -30,6 +30,24 @@
 业务代码优化，将实时性要求高的某些操作，使用主库做读操作
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;h3 id=&quot;5垂直分库&quot;&gt;5.垂直分库&lt;/h3&gt;
+&lt;p&gt;读写分离能够解决读的压力，但是高峰期写的压力很大，同时业务越来越复杂，多个应用系统使用同一个数据库。如果其中一个很小的非核心功能出现了慢查询，会拖垮整个项目。
+这时主库已经成为性能瓶颈，必须继续升级。将主库拆分，一方面提高性能，另一方面提高稳定性。按照业务垂直拆分，每个业务单独部署主库。&lt;br /&gt;
+未来是美好的，道路是曲折的，在这过程中我们也遇到了问题，很多SQL之前是join的，但是分库之后不能join查询。&lt;strong&gt;SQL需要按照标准来写。&lt;/strong&gt;  &lt;em&gt;下篇文章整理SQL规范。&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;6水平分库sharding&quot;&gt;6.水平分库（Sharding）&lt;/h3&gt;
+&lt;p&gt;读写分离，通过从库水平扩展，解决了读的压力；垂直分库通过按照业务拆分主库，缓解写的压力，但是系统还是存在隐患：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1.单表数据量越来越大。如订单表，单表记录数很快将过亿，超出MySql的极限，影响读写性能。    
+
+2.核心业务库的写压力越来越大，已不能再进一次垂直拆分，Mysql 主库不具备水平扩展的能力    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;水平分库面临的是按照什么逻辑进行拆分，一种是按照城市拆分，一个城市所有的数据在一个数据库中，另外按照订单id平均拆分数据，按照城市拆分的优点是聚合度较高，确定分布不均匀，产生热点数据，按照订单id来分布比较均匀，但是会存在一个商家的订单分布在不同的数据库中，查询一个商家的所有订单，可能会查到多个数据库。针对这种情况，解决方案是将要聚合查询的数据做冗余表，冗余的表不做拆分，同时在业务的开发过程中，减少聚合查询。&lt;br /&gt;
+水平分库的技术关键点在于数据访问层的设计，数据访问层主要包含三部分： &lt;br /&gt;
+ID生成器：生成每张表的主键&lt;br /&gt;
+数据源路由：将每次DB操作路由到不同的shard数据源上&lt;br /&gt;
+缓存： 采用Redis实现数据的缓存，提升性能（以后会有详细文章）&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 20 May 2018 14:32:24 +0800</pubDate>
